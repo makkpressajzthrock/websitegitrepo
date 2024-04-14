@@ -25,7 +25,7 @@ jobs:
           username: ubuntu
           server: 24.199.105.142
           port: 22 # default is 22
-          password: makk@123Aa
+          ssh_private_key: makk@123Aa
           #ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           # will put all file under this path
           local_path: ./* # default is ./*
