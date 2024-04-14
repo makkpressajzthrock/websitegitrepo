@@ -17,3 +17,8 @@ jobs:
           username: root #${{ secrets.USERNAME }}
           password: makk@123Aa #${{ secrets.PASSWORD }}
           port: 22 #${{ secrets.PORT }}
+          local_path: ./* # default is ./*
+          # files will copy to under remote_path
+          remote_path: /var/www/html
+          # sftp args
+          args: '-o ConnectTimeout=5'
