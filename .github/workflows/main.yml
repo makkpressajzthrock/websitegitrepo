@@ -7,18 +7,20 @@ on:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy:
+    deploy_job:
     runs-on: ubuntu-latest
+    name: deploy
     steps:
-      - name: Deploying to Digitalocean droplet
-        uses: appleboy/ssh-action@master # An action made to control Linux servers
-        with: # We set all our secrets here for the action, these won't be shown in the action logs
-          host: 24.199.105.142 #${{ secrets.HOST }}
-          username: root #${{ secrets.USERNAME }}
-          password: makk@123Aa #${{ secrets.PASSWORD }}
-          port: 22 #${{ secrets.PORT }}
-          local_path: ./* # default is ./*
-          # files will copy to under remote_path
-          remote_path: /var/www/html
-          # sftp args
-          args: '-o ConnectTimeout=5'
+        - name: Checkout
+        uses: actions/checkout@v2
+        - name: Deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+            username: root #${{ secrets.USERNAME }}
+            server: 24.199.105.142 #${{ secrets.HOST }}
+            port: 22 #${{ secrets.PORT }}
+            local_path: ./* # default is ./*
+            # files will copy to under remote_path
+            remote_path: /var/www/html
+            sftp_only: true
+            password: makk@123Aa #${{ secrets.PASSWORD }}
