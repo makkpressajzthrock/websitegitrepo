@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /adminpannel
-Disallow: /forgetpassword.php
-
-Sitemap: https://websitespeedy.com/sitemap.xml

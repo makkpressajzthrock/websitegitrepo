@@ -1,3 +1,0 @@
-RewriteCond %{HTTP_HOST} ^164\.92\.96\.37
-RewriteRule ^(.*)$ https://websitespeedy.com/$1 [L,R=301]
-
