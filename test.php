@@ -1,3 +1,3 @@
-<?php
+aa<?php
 phpinfo();
 ?>
