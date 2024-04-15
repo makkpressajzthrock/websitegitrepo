@@ -1,0 +1,6 @@
+/* Phase 2 CSS goes here */
+
+.container.singup_container.basic__details.unsubscribe .basic__details__form .reason {
+    max-width: 350px;
+    margin: 10px auto 10px !important;
+}

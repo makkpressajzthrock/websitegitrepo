@@ -1,0 +1,163 @@
+<?php
+include('../config.php');
+require_once('../inc/functions.php') ;
+
+
+
+error_reporting(1);error_reporting(E_ALL);
+
+$user_id = $_POST['user_id'];
+
+    $manager_site = getTableData( $conn , " boost_website " , " manager_id = '".$user_id."' " , "" , 1 ) ;
+
+ 
+     $sqlViews = "SELECT website_id, COUNT(*) AS views FROM `website_visits` WHERE `manager_id` = '".$user_id."' AND ip <> '' GROUP BY website_id";
+    $queryViews = $conn->query($sqlViews);
+    $views_by_website = array();
+    while ($row = $queryViews->fetch_assoc()) {
+        $views_by_website[$row['website_id']] = $row['views'];
+    }
+
+
+
+          // print_r($today_views_by_website);
+
+ $table ="<table>
+      <thead>
+        <tr>
+          <th>Website URL</th>
+          
+          <th>Total View</th>
+        </tr>
+      </thead>
+      <tbody>";
+
+      // <th>Today View</th>
+
+foreach ($manager_site as $site){
+
+
+
+
+  $querys = $conn->query(" SELECT ip, COUNT(*) AS today FROM website_visits WHERE DATE(created_at) = CURDATE() AND manager_id='".$user_id."' and website_id = '".$site["id"]."'  AND ip <> '' GROUP BY ip,created_at ") ;
+
+          
+   $rows = $querys->fetch_assoc();
+
+
+ 
+
+$table .="<tr>";
+     $table .="<td>".$site["website_url"]."</td>";
+
+     /**  old page view code 
+
+     $table .= "<td><span class='today-count'>";
+      if($rows!=''){
+        $table .=count($rows);
+      }
+      else{
+        $table .="0";
+      }
+
+     $table .= "</span></td>";
+
+          $plan_info_query = "SELECT * from plans WHERE id = '".$site["plan_id"]."'";
+
+          $plan_info_query = $conn->query($plan_info_query);
+
+        $view_max = $plan_info_query = $plan_info_query->fetch_assoc()['page_view'];
+
+
+     $table .= "<td><span class='today-count'>";
+        
+        if($views_by_website[$site["id"]]!=""){
+          $table .= $views_by_website[$site["id"]];
+        }else{
+          $table .="0";
+        }
+
+        if($view_max!="")
+          $table .= "/".$view_max;
+
+     $table .= "</span></td>";
+     End old page view code **/
+
+
+  $view_percentage = '0%' ;
+  $view_count = 0 ;
+  $sb_mpage_view = 5000000;
+  $total_view_label = '';
+
+  $sb_pid = $site["id"] ;
+
+  $sb_pq = $conn->query(" SELECT * FROM `boost_website` WHERE `id` = '$sb_pid' LIMIT 1 ; ") ;
+
+  if ( $sb_pq->num_rows > 0 ) {
+
+    $sb_pd = $sb_pq->fetch_assoc() ;
+
+    // get plan details 
+    $sb_ppid = (int)$sb_pd["plan_id"] ;
+    $sb_ppq = $conn->query(" SELECT * FROM `plans` WHERE `id` = '$sb_ppid' ORDER BY `id` ASC ");
+    $sb_ppd = $sb_ppq->fetch_assoc() ;
+
+    $total_view_label = $sb_ppd["page_view"] ;
+
+    if ( $sb_ppd["page_view"] != "Unlimited" ) {
+      $sb_mpage_view = str_replace(',', '', $sb_ppd["page_view"]);
+      $sb_mpage_view = (int)$sb_mpage_view;
+    }
+
+
+    $sb_purl = parse_url($sb_pd["website_url"]) ;
+    $temp_http = $sb_purl["scheme"]."://".$sb_purl["host"] ;
+
+
+
+    $sb_svcq = $conn->query(" SELECT * FROM `site_visit_count` WHERE website_id = '".$sb_pd["id"]."' ORDER BY id ASC LIMIT 1 ; ") ;
+
+    if ( $sb_svcq->num_rows > 0 ) {
+      $sb_svcd = $sb_svcq->fetch_assoc() ;
+      $view_count = $sb_svcd["view_count"] ;
+
+      if ( $sb_ppd["page_view"] != "Unlimited" ) {
+        $view_count = ($view_count > $sb_mpage_view) ? $sb_mpage_view : $view_count ;
+      }
+    }
+    else {
+
+      $sb_svcq = $conn->query(" SELECT * FROM `site_visit_count` WHERE ( `site_url` LIKE '%".$sb_purl["host"]."%' OR `site_url` LIKE '%".$temp_http."%' ) ORDER BY id ASC LIMIT 1 ; ") ;
+
+      if ( $sb_svcq->num_rows > 0 ) {
+        $sb_svcd = $sb_svcq->fetch_assoc() ;
+        $view_count = $sb_svcd["view_count"] ;
+
+        if ( $sb_ppd["page_view"] != "Unlimited" ) {
+          $view_count = ($view_count > $sb_mpage_view) ? $sb_mpage_view : $view_count ;
+        }
+
+        // $view_percentage = ($view_count/$sb_mpage_view)*100 ; 
+        // $view_percentage = (float)$view_percentage ;
+        // $view_percentage = number_format($view_percentage, 2, '.', '')."%";
+      }
+
+    }
+
+  }
+
+
+  $table .= "<td><span class='today-count'>".$view_count."/".$total_view_label."</span></td>" ;
+
+
+  $table .="</tr>  ";        
+
+
+}
+
+$table.="</tbody></table>";
+
+echo $table;
+
+
+?>

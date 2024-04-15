@@ -1,0 +1,107 @@
+
+
+.menu__grid .menu__title{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.megamenu__link .megamenu a {
+    padding: 4px 0;
+    font-size: 14px;
+}
+.menu__grid ul{    gap: 4px;}
+.menu-list-wrap {
+    display: flex;
+    gap: 50px;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+}
+.megamenu__link .megamenu{
+    width: 100%;
+    left: 0;
+    top: 100%;
+}
+.dropdown__link .dropdown{
+    top: 100%;
+}
+#megaMenuOne, #megaMenuOne-new{
+    position: static;
+}
+.navigation__wrapper ul li a{
+    height: 80px;
+}
+.navigation__wrapper ul li a:hover{
+    text-decoration: underline;
+}
+
+
+
+.header__section .section__wrapper{
+    max-width: 100%;
+    transition: .2s;
+}
+
+.section__wrapper.sticky{
+    transition: .2s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: -1px 0 4px 0 #00000073;
+}
+header.sticky::before{content: none;}
+header.sticky::after{content: none;}
+.inner__wrapper__menu__grid{max-width: 1500px; margin: 0 auto; gap: 0;}
+header.sticky{position: static; }
+
+.section__wrapper.sticky .logo__wrapper .logo__image{max-width: 200px;}
+
+
+
+#megaMenuOne-new .megamenu {
+    opacity: 0;
+    visibility: hidden;
+    /* transform: translateY(10px); */
+    transform-origin: top;
+    transform: rotateX(90deg);
+    transition: all .3s ease;
+}
+
+#megaMenuOne-new.anim-menu .megamenu {
+    opacity: 1;
+    visibility: visible;
+    /* transform: translateY(-10px); */
+    transform: rotateX(0deg);
+}
+.megamenu__link.anim-menu .menu__arrow {
+    transform: rotate(180deg);
+}
+
+#sticky-header #mobileNav{background-color: #fff; }
+#sticky-header #mobileNav ul li a{ color: #000;}
+
+#sticky-header header{position: static;}
+.section__wrapper.sticky header.sticky{
+    backdrop-filter: none;
+}
+
+@media(min-width: 991px){
+    .menu__grid:first-child {
+        border-right: 1px solid #f2364094;
+    }
+    .menu__grid .menu__title{ color: #f23640;}
+    .menu__grid{
+        width: 50%;
+        padding: 0 70px;
+        margin: 30px 0;
+    }   
+}
+@media(max-width: 1300px){
+    /* .inner__wrapper__menu__grid{gap: 60px;} */
+    .menu-list-wrap{gap: 10px;}
+}
+
+@media(max-width: 1200px){
+    /* .inner__wrapper__menu__grid{gap: 20px;} */
+}

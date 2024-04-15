@@ -1,0 +1,350 @@
+.megamenu__link .megamenu {
+    padding-top: 0px;
+}
+
+.inner__wrapper__menu__grid {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 87px);
+}
+
+.menu__link.btn.login {
+    width: fit-content;
+    color: #f23640;
+    background: none;
+    border: 1px solid #f23640;
+}
+
+.menu__link.btn.login:after {
+    content: none;
+}
+
+a.menu__link.btn.login:hover {
+    box-shadow: inset 0 0 0 1px #f23640;
+}
+
+.other__menu__wrapper {
+    gap: 15px;
+}
+
+.boosted_s_table {
+    background: #fff;
+    padding: 50px;
+}
+
+.boosted_s_table table {
+    width: 100% !important;
+    padding: 15px;
+    background: #fafafa !important;
+    outline: 1px solid #ececec;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.boosted_s_table table td {
+    padding: 8px 16px;
+    color: initial;
+    font-weight: 600;
+}
+
+.boosted_s_table thead {
+    background: #f2f2f2;
+}
+
+.boosted_s_table thead tr td {
+    border: 1px solid #e3e3e3;
+}
+
+.boosted_s_table table .selectplatform {
+    cursor: pointer;
+    padding: 8px 16px;
+    background: #f23640;
+    border-radius: 5px;
+    border-color: #f23640;
+    color: #fff;
+    letter-spacing: 1px;
+    outline: none;
+    font-size: 15px;
+
+}
+
+.boosted_s_table table .selectplatform option {
+    background: #f2f2f2;
+    color: #333;
+}
+
+
+.boosted_s_table .dataTables_empty {
+    text-align: center;
+}
+
+.boosted_s_table .text_center {
+    text-align: center;
+}
+
+
+
+.boosted_s_table .paginate_button {
+    text-align: center;
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    margin-right: 5px;
+    color: #000;
+    background-color: #f6f6f6;
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.boosted_s_table .paginate_button:hover,
+.boosted_s_table .paginate_button.current {
+    background-color: #f23640;
+    color: #fff;
+
+}
+
+.boosted_s_table .paginate_button.next,
+.boosted_s_table .paginate_button.previous {
+    padding: 0 10px;
+    width: max-content;
+}
+
+.boosted_s_table .dataTables_paginate {
+    text-align: center;
+
+}
+
+.boosted_s_table .paginate_button.disabled {
+
+    display: none;
+}
+
+.boosted_s_table table td:first-child {
+    width: 22%;
+}
+
+.boosted_s_table table td:nth-child(2) {
+    width: 30%;
+}
+
+.boosted_s_table tr td:nth-child(n + 3) {
+    text-align: center;
+    width: 12%;
+}
+
+
+.collage_grid {
+    background: #f2f2f2;
+    padding: 50px;
+}
+
+
+
+.colg_item {
+    padding:20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.collage_grid .colg {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 20px;
+}
+.collage_grid .colg p  {
+    color: initial;
+}
+
+
+.collage_grid .rating span {
+    font-size: 14px;
+}
+
+.collage_grid .rating{
+    width: 50px;
+    height: 50px;
+}
+
+.collage_grid .rating::after {
+    left: 50%;
+    width: 86%;
+    height: 86%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.load_device_in i:before{
+    background-size: 25px !important;
+}
+
+.collage_grid .table > p {
+    font-size: 13px;
+}
+
+.collage_grid  .d-grid-two .content .title {
+    font-size: 12px;
+}
+
+.collage_grid .colg:nth-child(even) {
+    margin-top: 60px;
+}
+.collage_grid .mb_dsk,
+.collage_grid .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+
+.collage_grid .rating.meh + p {
+    margin-top: 0;
+}
+
+.collage_grid .load_pro_bx {
+    grid-template-columns: max-content 1fr 1fr;
+    gap: 15px;
+    margin: 0;
+    align-items: end;
+}
+.collage_grid .load_device_in {
+    margin: 0;
+    justify-content: left;
+    height: 50px;
+}
+.collage_grid .perform_s {
+    margin-bottom: 30px;
+}
+.load_device_in > p {
+    font-size: 14px;
+}
+.collage_grid .coll_grid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collage_grid .slick-arrow{
+    position: relative;
+}
+
+.site_id {
+    
+    margin: auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.site_id img {
+    max-width: 50%;
+    max-height: 50px;
+    object-fit: contain;
+    margin: auto;
+}
+ul.platform_tab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    gap: 10px;
+}
+
+.platform_tab li {
+    cursor: pointer;
+    padding: 8px 4px;
+    background: transparent;
+    border-radius: 4px;
+    transition: all 250ms ease;
+}
+.platform_tab li:hover,
+ul.platform_tab li.selected {
+    background: #f23640;
+    color: #fff;
+}
+.collage_grid .slick-arrow{
+    position: relative;
+}
+
+
+@media (max-width:1400px){
+    .colg_item {
+        padding: 15px;
+    }
+
+    .load_device_in i{
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width:991px){
+    
+    .boosted_s_table {
+        padding: 30px;
+    }
+    .collage_grid {
+        padding: 50px 30px;
+    }
+
+    .boosted_s_table .dataTables_wrapper {
+        overflow: auto;
+        padding-bottom: 50px;
+    }
+    .boosted_s_table .dataTable{
+        min-width: 991px;
+    }
+
+    .boosted_s_table .section__wrapper{
+        position: relative;
+    }
+    .boosted_s_table .dataTables_paginate {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+    .collage_grid .colg {
+        gap: 30px;
+        padding: 0 15px;
+    }
+}
+@media (max-width:768px){
+
+    .collage_grid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .load_device_in > p {
+        font-size: 12px;
+    }
+    .load_device_in > p {
+    font-size: 12px;
+}.collage_grid .load_pro_bx {
+    gap: 15px;
+
+}
+
+
+.collage_grid .colg:nth-child(even) {
+    margin-top: 0;
+}
+
+}
+
+
+@media (max-width:600px){
+.boosted_s_table{
+    padding: 30px 20px;
+}
+    .collage_grid {
+        padding: 50px 20px 50px;
+    }
+    .collage_grid .colg:nth-child(even) {
+        top: 0;
+    }
+}
