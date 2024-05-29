@@ -1,4 +1,4 @@
-name: CI-SFTP
+name: AUTO-DEPLOY-SFTP
 
 # Controls when the action will run. 
 on:
@@ -19,6 +19,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+        fetch-depth: 1
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
